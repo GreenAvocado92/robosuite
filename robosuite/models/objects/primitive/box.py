@@ -11,7 +11,6 @@ class BoxObject(PrimitiveObject):
     Args:
         size (3-tuple of float): (half-x, half-y, half-z) size parameters for this box object
     """
-
     def __init__(
         self,
         name,
