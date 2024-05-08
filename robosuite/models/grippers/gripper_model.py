@@ -7,7 +7,6 @@ import robosuite.utils.transform_utils as T
 from robosuite.models.base import MujocoXMLModel
 from robosuite.utils.mjcf_utils import GRIPPER_COLLISION_COLOR, find_elements, string_to_array
 
-
 class GripperModel(MujocoXMLModel):
     """
     Base class for grippers
