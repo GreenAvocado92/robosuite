@@ -135,12 +135,13 @@ class UniformRandomSampler(ObjectPositionSampler):
         ensure_valid_placement=True,
         reference_pos=(0, 0, 0),
         z_offset=0.0,
+        is_restrict_rotation = False,
     ):
         self.x_range = x_range
         self.y_range = y_range
         self.rotation = rotation
         self.rotation_axis = rotation_axis
-
+        self.restrict_rotation = is_restrict_rotation
         super().__init__(
             name=name,
             mujoco_objects=mujoco_objects,
@@ -293,13 +294,15 @@ class UniformRandomSampler(ObjectPositionSampler):
 
                     # location is valid, put the object down
                     pos = (object_x, object_y, object_z)
+                    if self.restrict_rotation == True:
+                        quat = [1, 0, 0, 0]
                     placed_objects[obj.name] = (pos, quat, obj)
                     success = True
                     break
 
             if not success:
                 raise RandomizationError("Cannot place all objects ):")
-
+            
         return placed_objects
 
 
