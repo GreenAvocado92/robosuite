@@ -20,7 +20,6 @@ from robosuite.models.tasks import ManipulationTask
 from robosuite.utils.observables import Observable, sensor
 from robosuite.utils.placement_samplers import SequentialCompositeSampler, UniformRandomSampler
 
-
 class PickPlace(SingleArmEnv):
     """
     This class corresponds to the pick place task for a single robot arm.

@@ -385,7 +385,6 @@ class MujocoEnv(metaclass=EnvMeta):
         # 'policy_step' whether the current step we're taking is simply an internal update of the controller,
         # or an actual policy update
         policy_step = True
-        # import ipdb; ipdb.set_trace()
         # Loop through the simulation at the model timestep rate until we're ready to take the next policy step
         # (as defined by the control frequency specified at the environment level)
         for i in range(int(self.control_timestep / self.model_timestep)):
@@ -394,7 +393,8 @@ class MujocoEnv(metaclass=EnvMeta):
             self.sim.step()
             self._update_observables()
             policy_step = False
-
+            
+        
         # Note: this is done all at once to avoid floating point inaccuracies
         self.cur_time += self.control_timestep
 

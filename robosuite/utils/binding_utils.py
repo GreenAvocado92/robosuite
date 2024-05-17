@@ -1069,6 +1069,7 @@ class MjSim:
 
     @classmethod
     def from_xml_string(cls, xml):
+        # import ipdb; ipdb.set_trace()
         model = mujoco.MjModel.from_xml_string(xml)
         return cls(model)
 
@@ -1089,6 +1090,7 @@ class MjSim:
 
     def step(self, with_udd=True):
         """Step simulation."""
+        # import ipdb; ipdb.set_trace()
         mujoco.mj_step(self.model._model, self.data._data)
 
     def render(

@@ -96,6 +96,7 @@ class SquareNutObject(MujocoXMLObject):
     """
 
     def __init__(self, name):
+        import ipdb; ipdb.set_trace()
         super().__init__(
             xml_path_completion("objects/square-nut.xml"),
             name=name,

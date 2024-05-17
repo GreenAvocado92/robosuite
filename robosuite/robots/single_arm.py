@@ -259,7 +259,7 @@ class SingleArm(Manipulator):
 
         # Apply joint torque control
         self.sim.data.ctrl[self._ref_joint_actuator_indexes] = self.torques
-
+        # import ipdb; ipdb.set_trace()
         # If this is a policy step, also update buffers holding recent values of interest
         if policy_step:
             # Update proprioceptive values
