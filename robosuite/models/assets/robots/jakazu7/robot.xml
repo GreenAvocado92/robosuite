@@ -1,0 +1,66 @@
+<mujoco model="jaka_zu7">
+    <actuator>
+        <!-- Physical limits of the actuator. -->
+        <!-- Values taken from https://www.universal-robots.com/articles/ur-articles/max-joint-torques/ -->
+        <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="joint_1" name="torq_j1"/>
+        <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="joint_2" name="torq_j2"/>
+        <motor ctrllimited="true" ctrlrange="-150.0 150.0" joint="joint_3" name="torq_j3"/>
+        <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="joint_4" name="torq_j4"/>
+        <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="joint_5" name="torq_j5"/>
+        <motor ctrllimited="true" ctrlrange="-28.0 28.0" joint="joint_6" name="torq_j6"/>
+    </actuator>
+    <asset>
+        <mesh name="Link_0" file="/home/idm/Shares/imitation/robosuite/robosuite/models/assets/robots/jakazu7/meshes/Link_0.STL" />
+        <mesh name="Link_1" file="/home/idm/Shares/imitation/robosuite/robosuite/models/assets/robots/jakazu7/meshes/Link_1.STL" />
+        <mesh name="Link_2" file="/home/idm/Shares/imitation/robosuite/robosuite/models/assets/robots/jakazu7/meshes/Link_2.STL" />
+        <mesh name="Link_3" file="/home/idm/Shares/imitation/robosuite/robosuite/models/assets/robots/jakazu7/meshes/Link_3.STL" />
+        <mesh name="Link_4" file="/home/idm/Shares/imitation/robosuite/robosuite/models/assets/robots/jakazu7/meshes/Link_4.STL" />
+        <mesh name="Link_5" file="/home/idm/Shares/imitation/robosuite/robosuite/models/assets/robots/jakazu7/meshes/Link_5.STL" />
+        <mesh name="Link_6" file="/home/idm/Shares/imitation/robosuite/robosuite/models/assets/robots/jakazu7/meshes/Link_6.STL" />
+    </asset>
+    <worldbody>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.84706 0.84706 0.84706 1" mesh="Link_0" />
+        <geom type="mesh" rgba="0.84706 0.84706 0.84706 1" mesh="Link_0" />
+        <body name="Link_1" pos="0 0 0.12015">
+            <inertial pos="-2.5186e-07 0.0033226 -0.001509" quat="1 0.00056994 2.2456e-05 6.30952e-05" mass="15.135" diaginertia="0.044302 0.043091 0.030523" />
+            <joint name="joint_1" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.84706 0.84706 0.84706 1" mesh="Link_1" />
+            <geom type="mesh" rgba="0.84706 0.84706 0.84706 1" mesh="Link_1" />
+            <body name="Link_2" pos="0 0 0" quat="0.707105 0.707108 0 0">
+                <inertial pos="0.18 8.8001e-09 -0.14308" quat="0.5 0.5 0.5 0.5" mass="42.872" diaginertia="1.1119 1.0844 0.1014" />
+                <joint name="joint_2" pos="0 0 0" axis="0 0 1" limited="true" range="-1.48 4.62" />
+                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.84706 0.84706 0.84706 1" mesh="Link_2" />
+                <geom type="mesh" rgba="0.84706 0.84706 0.84706 1" mesh="Link_2" />
+                <body name="Link_3" pos="0.36 0 0">
+                    <inertial pos="0.15515 5.4643e-08 -0.012576" quat="0.517406 0.481957 0.481946 0.517433" mass="16.562" diaginertia="0.28365 0.279787 0.0196608" />
+                    <joint name="joint_3" pos="0 0 0" axis="0 0 1" limited="true" range="-3.05 3.05" />
+                    <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.84706 0.84706 0.84706 1" mesh="Link_3" />
+                    <geom type="mesh" rgba="0.84706 0.84706 0.84706 1" mesh="Link_3" />
+                    <body name="Link_4" pos="0.30353 0 -0.11501">
+                        <inertial pos="-2.1345e-06 -0.0058004 0.0026717" quat="0.699182 0.714944 2.86648e-05 -8.42093e-06" mass="5.5525" diaginertia="0.0092564 0.00897016 0.00522324" />
+                        <joint name="joint_4" pos="0 0 0" axis="0 0 1" limited="true" range="-1.48 4.62" />
+                        <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.84706 0.84706 0.84706 1" mesh="Link_4" />
+                        <geom type="mesh" rgba="0.84706 0.84706 0.84706 1" mesh="Link_4" />
+                        <body name="Link_5" pos="0 -0.1135 0" quat="0.707105 0.707108 0 0">
+                            <inertial pos="-2.0304e-06 -0.0028889 -0.0023424" quat="0.709446 0.70476 -1.15346e-05 9.23912e-07" mass="6.3339" diaginertia="0.012993 0.0127003 0.0058451" />
+                            <joint name="joint_5" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                            <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.84706 0.84706 0.84706 1" mesh="Link_5" />
+                            <geom type="mesh" rgba="0.84706 0.84706 0.84706 1" mesh="Link_5" />
+                            <body name="Link_6" pos="0 0.107 0" quat="0.707105 -0.707108 0 0">
+                                <inertial pos="2.7652e-05 -1.3485e-05 -0.021245" quat="-0.0453216 0.705107 0.0468242 0.7061" mass="1.4169" diaginertia="0.0011337 0.00072384 0.000718438" />
+                                <joint name="joint_6" pos="0 0 0" axis="0 0 1" limited="true" range="-6.28 6.28" />
+                                <geom type="mesh" contype="0" conaffinity="0" group="1" rgba="0.84706 0.84706 0.84706 1" mesh="Link_6" />
+                                <geom type="mesh" rgba="0.84706 0.84706 0.84706 1" mesh="Link_6" />
+                                <body name="right_hand" pos="0 0.098 0" quat="0.707 -0.707 0 0" >
+                                        <!-- This camera points out from the eef. -->
+                                        <camera mode="fixed" name="eye_in_hand" pos="0.05 0 0" quat="0 0.707108 0.707108 0" fovy="75"/>
+                                        <!-- To add gripper -->
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+</mujoco>

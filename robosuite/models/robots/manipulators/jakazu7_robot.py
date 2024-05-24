@@ -4,7 +4,7 @@ from robosuite.models.robots.manipulators.manipulator_model import ManipulatorMo
 from robosuite.utils.mjcf_utils import xml_path_completion
 
 
-class UR5e(ManipulatorModel):
+class Jakazu7(ManipulatorModel):
     """
     UR5e is a sleek and elegant new robot created by Universal Robots
 
@@ -13,7 +13,7 @@ class UR5e(ManipulatorModel):
     """
 
     def __init__(self, idn=0):
-        super().__init__(xml_path_completion("robots/ur5e/robot.xml"), idn=idn)
+        super().__init__(xml_path_completion("robots/jakazu7/robot.xml"), idn=idn)
 
     @property
     def default_mount(self):
@@ -29,9 +29,7 @@ class UR5e(ManipulatorModel):
 
     @property
     def init_qpos(self):
-        # return np.array([-0.470, -1.735, 2.480, -2.275, -1.590, -1.991])
-        # return np.array([0, -1.9, 1.57, -3.14, -1.57, 0.])
-        return np.array([0, -2.0, 1.87, -3., -1.57, 0.]) # 效果不错
+        return np.array([0, 1.57, -1.57, 2.828, 1.57, 0])
 
     @property
     def base_xpos_offset(self):

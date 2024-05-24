@@ -525,6 +525,7 @@ class PickPlace(SingleArmEnv):
         self._construct_visual_objects()
         self._construct_objects()
 
+  
         # task includes arena, robot, and objects of interest
         self.model = ManipulationTask(
             mujoco_arena=mujoco_arena,
