@@ -293,6 +293,7 @@ class Robot(object):
         """
         return self.action_limits[0].shape[0]
 
+
     @property
     def dof(self):
         """

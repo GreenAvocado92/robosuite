@@ -7,6 +7,7 @@ from robosuite.models.objects import MujocoObject
 from robosuite.utils import RandomizationError
 from robosuite.utils.transform_utils import quat_multiply
 
+import random
 
 class ObjectPositionSampler:
     """
@@ -165,8 +166,8 @@ class UniformRandomSampler(ObjectPositionSampler):
         if self.ensure_object_boundary_in_range:
             minimum += object_horizontal_radius
             maximum -= object_horizontal_radius
-        return np.random.uniform(high=maximum, low=minimum)
-
+        x_value = random.uniform(minimum, maximum)
+        return x_value
     def _sample_y(self, object_horizontal_radius):
         """
         Samples the y location for a given object
@@ -178,10 +179,16 @@ class UniformRandomSampler(ObjectPositionSampler):
             float: sampled y position
         """
         minimum, maximum = self.y_range
+
         if self.ensure_object_boundary_in_range:
             minimum += object_horizontal_radius
             maximum -= object_horizontal_radius
-        return np.random.uniform(high=maximum, low=minimum)
+        # np.random.seed(0)
+        # value = np.random.uniform(high=maximum, low=minimum)
+        # value = np.random.uniform(minimum, maximum)
+        value = random.uniform(minimum, maximum)
+
+        return value
 
     def _sample_quat(self):
         """
@@ -196,7 +203,8 @@ class UniformRandomSampler(ObjectPositionSampler):
         if self.rotation is None:
             rot_angle = np.random.uniform(high=2 * np.pi, low=0)
         elif isinstance(self.rotation, collections.abc.Iterable):
-            rot_angle = np.random.uniform(high=max(self.rotation), low=min(self.rotation))
+            # rot_angle = np.random.uniform(high=max(self.rotation), low=min(self.rotation))
+            rot_angle = random.uniform(self.rotation[0], self.rotation[1])
         else:
             rot_angle = self.rotation
 

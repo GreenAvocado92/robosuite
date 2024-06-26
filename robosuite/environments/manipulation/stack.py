@@ -11,7 +11,6 @@ from robosuite.utils.observables import Observable, sensor
 from robosuite.utils.placement_samplers import UniformRandomSampler
 from robosuite.utils.transform_utils import convert_quat
 
-
 class Stack(SingleArmEnv):
     """
     This class corresponds to the stacking task for a single robot arm.

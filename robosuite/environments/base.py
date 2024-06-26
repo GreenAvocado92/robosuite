@@ -531,11 +531,21 @@ class MujocoEnv(metaclass=EnvMeta):
             old_path = elem.get("file")
             if old_path is None:
                 continue
-            old_path_split = old_path.split("/")
-            ind = max(loc for loc, val in enumerate(old_path_split) if val == "robosuite")  # last occurrence index
-            new_path_split = path_split + old_path_split[ind + 1 :]
-            new_path = "/".join(new_path_split)
-            elem.set("file", new_path)
+            # old_path_split = old_path.split("/")
+            # import ipdb; ipdb.set_trace()
+            # print("old_path:", old_path)
+            # print("old_path_split:", old_path_split)
+            # ind = max(loc for loc, val in enumerate(old_path_split) if val == "robosuite")  # last occurrence index
+            # new_path_split = path_split + old_path_split[ind + 1 :]
+            # new_path = "/".join(new_path_split)
+            # print("new_path:", new_path)
+            # if new_path == old_path:
+                # print("new_path == old_path")
+            # else:
+                # print("new_path != old_path")
+
+            # elem.set("file", new_path)
+            elem.set("file", old_path)
 
         return ET.tostring(root, encoding="utf8").decode("utf8")
 
@@ -735,3 +745,4 @@ class MujocoEnv(metaclass=EnvMeta):
             int: Action space dimension
         """
         raise NotImplementedError
+

@@ -461,6 +461,11 @@ class MujocoXMLObject(MujocoObject, MujocoXML):
     def top_offset(self):
         top_site = self.worldbody.find("./body/site[@name='{}top_site']".format(self.naming_prefix))
         return string_to_array(top_site.get("pos"))
+    
+    # @property
+    # def get_hole_position(self):
+    #     top_site = self.worldbody.find("./body/site[@name='{}hole_0_site']".format(self.naming_prefix))
+    #     return string_to_array(top_site.get("pos"))
 
     @property
     def horizontal_radius(self):
@@ -474,7 +479,6 @@ class MujocoXMLObject(MujocoObject, MujocoXML):
             "./body/site[@name='{}horizontal_radius_site']".format(self.naming_prefix)
         )
         return string_to_array(horizontal_radius_site.get("pos")) - self.bottom_offset
-
 
 class MujocoGeneratedObject(MujocoObject):
     """
