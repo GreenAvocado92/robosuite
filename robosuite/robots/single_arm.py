@@ -63,7 +63,6 @@ class SingleArm(Manipulator):
         gripper_type="default",
         control_freq=20,
     ):
-
         self.controller = None
         self.controller_config = copy.deepcopy(controller_config)
         self.gripper_type = gripper_type
@@ -93,6 +92,11 @@ class SingleArm(Manipulator):
             mount_type=mount_type,
             control_freq=control_freq,
         )
+        self.init_qpos_value = np.array([0, -2., 1.87, -3., -1.57, 0.])
+
+    def set_qpos_joints(self, qpos):
+        # self.init_qpos_value = qpos
+        pass
 
     def _load_controller(self):
         """
@@ -242,6 +246,7 @@ class SingleArm(Manipulator):
         else:
             arm_action = action
 
+
         # Update the controller goal if this is a new policy step
         if policy_step:
             self.controller.set_goal(arm_action)
@@ -259,7 +264,10 @@ class SingleArm(Manipulator):
 
         # Apply joint torque control
         self.sim.data.ctrl[self._ref_joint_actuator_indexes] = self.torques
-        # import ipdb; ipdb.set_trace()
+        
+        
+
+
         # If this is a policy step, also update buffers holding recent values of interest
         if policy_step:
             # Update proprioceptive values
@@ -277,6 +285,7 @@ class SingleArm(Manipulator):
             )
             ee_acc = np.array([np.convolve(col, np.ones(10) / 10.0, mode="valid")[0] for col in diffs.transpose()])
             self.recent_ee_acc.push(ee_acc)
+     
 
     def _visualize_grippers(self, visible):
         """

@@ -575,13 +575,14 @@ class RobotEnv(MujocoEnv):
         assert len(action) == self.action_dim, "environment got invalid action dimension -- expected {}, got {}".format(
             self.action_dim, len(action)
         )
-        # import ipdb; ipdb.set_trace()
         # Update robot joints based on controller actions
         cutoff = 0
         for idx, robot in enumerate(self.robots):
             robot_action = action[cutoff : cutoff + robot.action_dim]
             robot.control(robot_action, policy_step=policy_step)
             cutoff += robot.action_dim
+        
+        
 
     def _load_robots(self):
         """

@@ -41,7 +41,7 @@ pos_action_ik = [0, delta_pos_y, 0]
 # Rotation trajectory
 rot_r_threshold = np.pi / 2
 delta_rot_r = 0.01
-rot_action_osc = [delta_rot_r * 40, 0, 0]
+rot_action_osc = [delta_rot_r * 10, delta_rot_r * 10, 0]
 rot_action_ik = [delta_rot_r * 5, 0, 0]
 
 # Concatenated thresholds and corresponding indexes (y = 1 in x,y,z; roll = 0 in r,p,y)
@@ -82,16 +82,13 @@ def step(env, action, current_torques):
 
 # Running the actual test #
 def test_linear_interpolator():
-
-    for controller_name in ["OSC_POSE"]: # "IK_POSE", 
-
-        for traj in ["pos", "ori"]:
-
+    for controller_name in ["OSC_POSE"]:
+        for traj in ["ori"]:
             # Define counter to increment timesteps and torques for each trajectory
             timesteps = [0, 0]
             summed_abs_delta_torques = [np.zeros(7), np.zeros(7)]
 
-            for interpolator in [None, "linear"]:
+            for interpolator in ["linear"]: #, "linear"]:
                 # Define numpy seed so we guarantee consistent starting pos / ori for each trajectory
                 np.random.seed(3)
 
@@ -106,6 +103,7 @@ def test_linear_interpolator():
                     controller_config["interpolation"] = interpolator
                     controller_config["ramp_ratio"] = 1.0
 
+ 
                 # Now, create a test env for testing the controller on
                 env = suite.make(
                     "Lift",
@@ -121,12 +119,15 @@ def test_linear_interpolator():
                 # Reset the environment
                 env.reset()
 
+                target_list  = [-0.019, -0.706,-0.513, 0.487]
+                target_orn = np.array(target_list)
+                import ipdb; ipdb.set_trace()
+
                 # Hardcode the starting position for sawyer
                 init_qpos = [-0.5538, -0.8208, 0.4155, 1.8409, -0.4955, 0.6482, 1.9628]
                 env.robots[0].set_robot_joint_positions(init_qpos)
                 env.robots[0].controller.update_initial_joints(init_qpos)
                 env.robots[0].controller.reset_goal()
-
 
                 # Notify user a new trajectory is beginning
                 print(
@@ -144,7 +145,7 @@ def test_linear_interpolator():
                 initial_state = [env.robots[0]._hand_pos, T.mat2quat(env.robots[0]._hand_orn)]
                 dstate = [
                     env.robots[0]._hand_pos - initial_state[0],
-                    T.mat2euler(T.quat2mat(T.quat_distance(T.mat2quat(env.robots[0]._hand_orn), initial_state[1]))),
+                    T.mat2euler(T.quat2mat(T.quat_distance(target_orn, T.mat2quat(env.robots[0]._hand_orn)))),
                 ]
 
                 # Define the uniform trajectory action
@@ -161,9 +162,20 @@ def test_linear_interpolator():
                 # Determine which trajectory we're executing
                 k = 0 if traj == "pos" else 1
                 j = 0 if not interpolator else 1
-
+                
                 # Run trajectory until the threshold condition is met
-                while abs(dstate[k][indexes[k]]) < abs(thresholds[k]):
+                # while abs(dstate[k][indexes[k]]) < abs(thresholds[k]):
+                angle_threshold = 1
+                while True:
+                    offset = T.mat2euler(T.quat2mat(T.quat_distance(target_orn, T.mat2quat(env.robots[0]._hand_orn))))
+                    offset_angle =np.degrees(offset)
+                    if abs(offset_angle[0]) < angle_threshold and abs(offset_angle[1]) < angle_threshold and abs(offset_angle[2]) < angle_threshold:
+                        break
+                    
+                    action[3] = offset[0] / 5
+                    action[4] = offset[1] / 5
+                    action[5] = offset[2] / 5
+                    print("act = ", action)
                     _, summed_torques, current_torques = step(env, action, current_torques)
                     if args.render:
                         env.render()
@@ -171,10 +183,6 @@ def test_linear_interpolator():
                     # Update torques, timestep count, and state
                     summed_abs_delta_torques[j] += summed_torques
                     timesteps[j] += 1
-                    dstate = [
-                        env.robots[0]._hand_pos - initial_state[0],
-                        T.mat2euler(T.quat2mat(T.quat_distance(T.mat2quat(env.robots[0]._hand_orn), initial_state[1]))),
-                    ]
 
                 # When finished, print out the timestep results
                 print(
@@ -184,6 +192,7 @@ def test_linear_interpolator():
                 )
 
                 # Shut down this env before starting the next test
+                import ipdb; ipdb.set_trace()
                 env.close()
 
     # Tests completed!

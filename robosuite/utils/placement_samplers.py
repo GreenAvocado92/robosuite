@@ -208,6 +208,8 @@ class UniformRandomSampler(ObjectPositionSampler):
         else:
             rot_angle = self.rotation
 
+        # print("rot_angle: ", rot_angle)
+
         # Return angle based on axis requested
         if self.rotation_axis == "x":
             return np.array([np.cos(rot_angle / 2), np.sin(rot_angle / 2), 0, 0])

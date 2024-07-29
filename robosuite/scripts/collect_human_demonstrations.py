@@ -200,7 +200,7 @@ if __name__ == "__main__":
     # Create argument configuration
     config = {
         "env_name": args.environment,
-        "robots": args.robots,
+        "robots": ['UR5e','UR5e'],# args.robots,
         "controller_configs": controller_config,
     }
 

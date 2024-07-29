@@ -1090,7 +1090,6 @@ class MjSim:
 
     def step(self, with_udd=True):
         """Step simulation."""
-        # import ipdb; ipdb.set_trace()
         mujoco.mj_step(self.model._model, self.data._data)
 
     def render(

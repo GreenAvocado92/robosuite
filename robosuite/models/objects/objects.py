@@ -359,7 +359,7 @@ class MujocoXMLObject(MujocoObject, MujocoXML):
         obj.attrib["name"] = "main"
         # Get all geom_pairs in this tree
         geom_pairs = self._get_geoms(obj)
-
+        
         # Define a temp function so we don't duplicate so much code
         obj_type = self.obj_type
 
@@ -449,6 +449,7 @@ class MujocoXMLObject(MujocoObject, MujocoXML):
         # Loop through all children elements recursively and add to pairs
         for child in root:
             geom_pairs += self._get_geoms(child, _parent=root)
+        
         # Return all found pairs
         return geom_pairs
 
@@ -461,11 +462,6 @@ class MujocoXMLObject(MujocoObject, MujocoXML):
     def top_offset(self):
         top_site = self.worldbody.find("./body/site[@name='{}top_site']".format(self.naming_prefix))
         return string_to_array(top_site.get("pos"))
-    
-    # @property
-    # def get_hole_position(self):
-    #     top_site = self.worldbody.find("./body/site[@name='{}hole_0_site']".format(self.naming_prefix))
-    #     return string_to_array(top_site.get("pos"))
 
     @property
     def horizontal_radius(self):
