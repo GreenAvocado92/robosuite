@@ -16,39 +16,41 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=81f6180a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=96be8719" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9f1c6d22"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'source/robosuite.controllers.composite';</script>
     <script src="../_static/js/custom.js?v=4441fbbd"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -57,6 +59,7 @@
     <link rel="prev" title="robosuite.controllers package" href="robosuite.controllers.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.5" />
   </head>
   
   
@@ -72,19 +75,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,7 +84,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -100,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,7 +108,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,21 +139,17 @@
     
     
     <img src="../_static/robosuite_color.png" class="logo__image only-light" alt="robosuite 1.5 documentation - Home"/>
-    <script>document.write(`<img src="../_static/robosuite_color.png" class="logo__image only-dark" alt="robosuite 1.5 documentation - Home"/>`);</script>
+    <img src="../_static/robosuite_color.png" class="logo__image only-dark pst-js-only" alt="robosuite 1.5 documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
@@ -271,9 +259,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -356,7 +349,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -370,25 +363,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -415,11 +400,17 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-robosuite.controllers.composite.composite_controller">robosuite.controllers.composite.composite_controller module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController"><code class="docutils literal notranslate"><span class="pre">CompositeController</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.action_limits"><code class="docutils literal notranslate"><span class="pre">CompositeController.action_limits</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.create_action_dict_from_action_vector"><code class="docutils literal notranslate"><span class="pre">CompositeController.create_action_dict_from_action_vector()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.create_action_vector"><code class="docutils literal notranslate"><span class="pre">CompositeController.create_action_vector()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_action_info"><code class="docutils literal notranslate"><span class="pre">CompositeController.get_action_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_action_info_dict"><code class="docutils literal notranslate"><span class="pre">CompositeController.get_action_info_dict()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_control_dim"><code class="docutils literal notranslate"><span class="pre">CompositeController.get_control_dim()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_controller"><code class="docutils literal notranslate"><span class="pre">CompositeController.get_controller()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_controller_base_pose"><code class="docutils literal notranslate"><span class="pre">CompositeController.get_controller_base_pose()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.load_controller_config"><code class="docutils literal notranslate"><span class="pre">CompositeController.load_controller_config()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.name"><code class="docutils literal notranslate"><span class="pre">CompositeController.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.print_action_info"><code class="docutils literal notranslate"><span class="pre">CompositeController.print_action_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.print_action_info_dict"><code class="docutils literal notranslate"><span class="pre">CompositeController.print_action_info_dict()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.reset"><code class="docutils literal notranslate"><span class="pre">CompositeController.reset()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.run_controller"><code class="docutils literal notranslate"><span class="pre">CompositeController.run_controller()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.set_goal"><code class="docutils literal notranslate"><span class="pre">CompositeController.set_goal()</span></code></a></li>
@@ -436,7 +427,11 @@ document.write(`
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody"><code class="docutils literal notranslate"><span class="pre">WholeBody</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.action_limits"><code class="docutils literal notranslate"><span class="pre">WholeBody.action_limits</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.create_action_dict_from_action_vector"><code class="docutils literal notranslate"><span class="pre">WholeBody.create_action_dict_from_action_vector()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.create_action_vector"><code class="docutils literal notranslate"><span class="pre">WholeBody.create_action_vector()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.get_action_info"><code class="docutils literal notranslate"><span class="pre">WholeBody.get_action_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.get_action_info_dict"><code class="docutils literal notranslate"><span class="pre">WholeBody.get_action_info_dict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.joint_action_policy"><code class="docutils literal notranslate"><span class="pre">WholeBody.joint_action_policy</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.name"><code class="docutils literal notranslate"><span class="pre">WholeBody.name</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.print_action_info"><code class="docutils literal notranslate"><span class="pre">WholeBody.print_action_info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.print_action_info_dict"><code class="docutils literal notranslate"><span class="pre">WholeBody.print_action_info_dict()</span></code></a></li>
@@ -481,12 +476,33 @@ document.write(`
 <span id="robosuite-controllers-composite-composite-controller-module"></span><h2>robosuite.controllers.composite.composite_controller module<a class="headerlink" href="#module-robosuite.controllers.composite.composite_controller" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.controllers.composite.composite_controller.</span></span><span class="sig-name descname"><span class="pre">CompositeController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.utils.html#robosuite.utils.binding_utils.MjSim" title="robosuite.utils.binding_utils.MjSim"><span class="pre">MjSim</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">robot_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.models.robots.html#robosuite.models.robots.robot_model.RobotModel" title="robosuite.models.robots.robot_model.RobotModel"><span class="pre">RobotModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">grippers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="robosuite.models.grippers.html#robosuite.models.grippers.gripper_model.GripperModel" title="robosuite.models.grippers.gripper_model.GripperModel"><span class="pre">GripperModel</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.controllers.composite.composite_controller.</span></span><span class="sig-name descname"><span class="pre">CompositeController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.utils.html#robosuite.utils.binding_utils.MjSim" title="robosuite.utils.binding_utils.MjSim"><span class="pre">MjSim</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">robot_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.models.robots.html#robosuite.models.robots.robot_model.RobotModel" title="robosuite.models.robots.robot_model.RobotModel"><span class="pre">RobotModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">grippers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="robosuite.models.grippers.html#robosuite.models.grippers.gripper_model.GripperModel" title="robosuite.models.grippers.gripper_model.GripperModel"><span class="pre">GripperModel</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>This is the parent class for all composite controllers. If you want to develop an advanced version of your controller, you should subclass from this composite controller.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController.action_limits">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">action_limits</span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.action_limits" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">action_limits</span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.action_limits" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController.create_action_dict_from_action_vector">
+<span class="sig-name descname"><span class="pre">create_action_dict_from_action_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action_vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.create_action_dict_from_action_vector" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController.create_action_vector">
+<span class="sig-name descname"><span class="pre">create_action_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.create_action_vector" title="Link to this definition">#</a></dt>
+<dd><p>A helper function that creates the action vector given a dictionary</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController.get_action_info">
+<span class="sig-name descname"><span class="pre">get_action_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_action_info" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController.get_action_info_dict">
+<span class="sig-name descname"><span class="pre">get_action_info_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_action_info_dict" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -502,7 +518,35 @@ document.write(`
 <dl class="py method">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController.get_controller_base_pose">
 <span class="sig-name descname"><span class="pre">get_controller_base_pose</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">controller_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_controller_base_pose" title="Link to this definition">#</a></dt>
-<dd></dd></dl>
+<dd><p>Get the base position and orientation of a specified controller’s part. Note: this pose may likely differ from
+the robot base’s pose.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>controller_name</strong> (<em>str</em>) – The name of the controller, used to look up part-specific information.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A tuple containing:</dt><dd><ul class="simple">
+<li><p>base_pos (np.ndarray): The 3D position of the part’s center in world coordinates (shape: (3,)).</p></li>
+<li><p>base_ori (np.ndarray): The 3x3 rotation matrix representing the part’s orientation in world coordinates.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="robosuite.utils.html#robosuite.utils.binding_utils.MjModel.tuple" title="robosuite.utils.binding_utils.MjModel.tuple">tuple</a>[np.ndarray, np.ndarray]</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Details:</dt><dd><ul class="simple">
+<li><p>Uses the controller’s <cite>naming_prefix</cite> and <cite>part_name</cite> to construct the corresponding site name.</p></li>
+<li><p>Queries the simulation (<cite>self.sim</cite>) for the site’s position (<cite>site_xpos</cite>) and orientation (<cite>site_xmat</cite>).</p></li>
+<li><p>The site orientation matrix is reshaped from a flat array of size 9 to a 3x3 rotation matrix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController.load_controller_config">
@@ -511,7 +555,17 @@ document.write(`
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'BASIC'</span></em><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.name" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'BASIC'</span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.name" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController.print_action_info">
+<span class="sig-name descname"><span class="pre">print_action_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.print_action_info" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.CompositeController.print_action_info_dict">
+<span class="sig-name descname"><span class="pre">print_action_info_dict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.CompositeController.print_action_info_dict" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -543,11 +597,11 @@ document.write(`
 
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.HybridMobileBase">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.controllers.composite.composite_controller.</span></span><span class="sig-name descname"><span class="pre">HybridMobileBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.utils.html#robosuite.utils.binding_utils.MjSim" title="robosuite.utils.binding_utils.MjSim"><span class="pre">MjSim</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">robot_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.models.robots.html#robosuite.models.robots.robot_model.RobotModel" title="robosuite.models.robots.robot_model.RobotModel"><span class="pre">RobotModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">grippers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="robosuite.models.grippers.html#robosuite.models.grippers.gripper_model.GripperModel" title="robosuite.models.grippers.gripper_model.GripperModel"><span class="pre">GripperModel</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.HybridMobileBase" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.controllers.composite.composite_controller.</span></span><span class="sig-name descname"><span class="pre">HybridMobileBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.utils.html#robosuite.utils.binding_utils.MjSim" title="robosuite.utils.binding_utils.MjSim"><span class="pre">MjSim</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">robot_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.models.robots.html#robosuite.models.robots.robot_model.RobotModel" title="robosuite.models.robots.robot_model.RobotModel"><span class="pre">RobotModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">grippers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="robosuite.models.grippers.html#robosuite.models.grippers.gripper_model.GripperModel" title="robosuite.models.grippers.gripper_model.GripperModel"><span class="pre">GripperModel</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.HybridMobileBase" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#robosuite.controllers.composite.composite_controller.CompositeController" title="robosuite.controllers.composite.composite_controller.CompositeController"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompositeController</span></code></a></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.HybridMobileBase.action_limits">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">action_limits</span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.HybridMobileBase.action_limits" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">action_limits</span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.HybridMobileBase.action_limits" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -558,7 +612,7 @@ document.write(`
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.HybridMobileBase.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HYBRID_MOBILE_BASE'</span></em><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.HybridMobileBase.name" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HYBRID_MOBILE_BASE'</span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.HybridMobileBase.name" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -570,23 +624,44 @@ document.write(`
 
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.WholeBody">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.controllers.composite.composite_controller.</span></span><span class="sig-name descname"><span class="pre">WholeBody</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.utils.html#robosuite.utils.binding_utils.MjSim" title="robosuite.utils.binding_utils.MjSim"><span class="pre">MjSim</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">robot_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.models.robots.html#robosuite.models.robots.robot_model.RobotModel" title="robosuite.models.robots.robot_model.RobotModel"><span class="pre">RobotModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">grippers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="robosuite.models.grippers.html#robosuite.models.grippers.gripper_model.GripperModel" title="robosuite.models.grippers.gripper_model.GripperModel"><span class="pre">GripperModel</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.controllers.composite.composite_controller.</span></span><span class="sig-name descname"><span class="pre">WholeBody</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.utils.html#robosuite.utils.binding_utils.MjSim" title="robosuite.utils.binding_utils.MjSim"><span class="pre">MjSim</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">robot_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.models.robots.html#robosuite.models.robots.robot_model.RobotModel" title="robosuite.models.robots.robot_model.RobotModel"><span class="pre">RobotModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">grippers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="robosuite.models.grippers.html#robosuite.models.grippers.gripper_model.GripperModel" title="robosuite.models.grippers.gripper_model.GripperModel"><span class="pre">GripperModel</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#robosuite.controllers.composite.composite_controller.CompositeController" title="robosuite.controllers.composite.composite_controller.CompositeController"><code class="xref py py-class docutils literal notranslate"><span class="pre">CompositeController</span></code></a></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.WholeBody.action_limits">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">action_limits</span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody.action_limits" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">action_limits</span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody.action_limits" title="Link to this definition">#</a></dt>
 <dd><p>Returns the action limits for the whole body controller.
 Corresponds to each term in the action vector passed to env.step().</p>
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.WholeBody.create_action_dict_from_action_vector">
+<span class="sig-name descname"><span class="pre">create_action_dict_from_action_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action_vector</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody.create_action_dict_from_action_vector" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.WholeBody.create_action_vector">
 <span class="sig-name descname"><span class="pre">create_action_vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">action_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody.create_action_vector" title="Link to this definition">#</a></dt>
+<dd><p>A helper function that creates the action vector given a dictionary</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.WholeBody.get_action_info">
+<span class="sig-name descname"><span class="pre">get_action_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody.get_action_info" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.WholeBody.get_action_info_dict">
+<span class="sig-name descname"><span class="pre">get_action_info_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody.get_action_info_dict" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.WholeBody.joint_action_policy">
+<span class="sig-name descname"><span class="pre">joint_action_policy</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference internal" href="robosuite.utils.html#robosuite.utils.ik_utils.IKSolver" title="robosuite.utils.ik_utils.IKSolver"><span class="pre">IKSolver</span></a></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody.joint_action_policy" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.WholeBody.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHOLE_BODY_COMPOSITE'</span></em><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody.name" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHOLE_BODY_COMPOSITE'</span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBody.name" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -629,11 +704,11 @@ underlying factorized controllers.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.WholeBodyIK">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.controllers.composite.composite_controller.</span></span><span class="sig-name descname"><span class="pre">WholeBodyIK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.utils.html#robosuite.utils.binding_utils.MjSim" title="robosuite.utils.binding_utils.MjSim"><span class="pre">MjSim</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">robot_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.models.robots.html#robosuite.models.robots.robot_model.RobotModel" title="robosuite.models.robots.robot_model.RobotModel"><span class="pre">RobotModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">grippers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="robosuite.models.grippers.html#robosuite.models.grippers.gripper_model.GripperModel" title="robosuite.models.grippers.gripper_model.GripperModel"><span class="pre">GripperModel</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBodyIK" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.controllers.composite.composite_controller.</span></span><span class="sig-name descname"><span class="pre">WholeBodyIK</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.utils.html#robosuite.utils.binding_utils.MjSim" title="robosuite.utils.binding_utils.MjSim"><span class="pre">MjSim</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">robot_model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="robosuite.models.robots.html#robosuite.models.robots.robot_model.RobotModel" title="robosuite.models.robots.robot_model.RobotModel"><span class="pre">RobotModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">grippers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="robosuite.models.grippers.html#robosuite.models.grippers.gripper_model.GripperModel" title="robosuite.models.grippers.gripper_model.GripperModel"><span class="pre">GripperModel</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBodyIK" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#robosuite.controllers.composite.composite_controller.WholeBody" title="robosuite.controllers.composite.composite_controller.WholeBody"><code class="xref py py-class docutils literal notranslate"><span class="pre">WholeBody</span></code></a></p>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="robosuite.controllers.composite.composite_controller.WholeBodyIK.name">
-<span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHOLE_BODY_IK'</span></em><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBodyIK.name" title="Link to this definition">#</a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'WHOLE_BODY_IK'</span></span><a class="headerlink" href="#robosuite.controllers.composite.composite_controller.WholeBodyIK.name" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -757,24 +832,32 @@ If not just use the old controller config for arms.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-robosuite.controllers.composite.composite_controller">robosuite.controllers.composite.composite_controller module</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController"><code class="docutils literal notranslate"><span class="pre">CompositeController</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.action_limits"><code class="docutils literal notranslate"><span class="pre">CompositeController.action_limits</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.create_action_dict_from_action_vector"><code class="docutils literal notranslate"><span class="pre">CompositeController.create_action_dict_from_action_vector()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.create_action_vector"><code class="docutils literal notranslate"><span class="pre">CompositeController.create_action_vector()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_action_info"><code class="docutils literal notranslate"><span class="pre">CompositeController.get_action_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_action_info_dict"><code class="docutils literal notranslate"><span class="pre">CompositeController.get_action_info_dict()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_control_dim"><code class="docutils literal notranslate"><span class="pre">CompositeController.get_control_dim()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_controller"><code class="docutils literal notranslate"><span class="pre">CompositeController.get_controller()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.get_controller_base_pose"><code class="docutils literal notranslate"><span class="pre">CompositeController.get_controller_base_pose()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.load_controller_config"><code class="docutils literal notranslate"><span class="pre">CompositeController.load_controller_config()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.name"><code class="docutils literal notranslate"><span class="pre">CompositeController.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.print_action_info"><code class="docutils literal notranslate"><span class="pre">CompositeController.print_action_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.print_action_info_dict"><code class="docutils literal notranslate"><span class="pre">CompositeController.print_action_info_dict()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.reset"><code class="docutils literal notranslate"><span class="pre">CompositeController.reset()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.run_controller"><code class="docutils literal notranslate"><span class="pre">CompositeController.run_controller()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.CompositeController.set_goal"><code class="docutils literal notranslate"><span class="pre">CompositeController.set_goal()</span></code></a></li>
@@ -791,7 +874,11 @@ If not just use the old controller config for arms.</p>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody"><code class="docutils literal notranslate"><span class="pre">WholeBody</span></code></a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.action_limits"><code class="docutils literal notranslate"><span class="pre">WholeBody.action_limits</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.create_action_dict_from_action_vector"><code class="docutils literal notranslate"><span class="pre">WholeBody.create_action_dict_from_action_vector()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.create_action_vector"><code class="docutils literal notranslate"><span class="pre">WholeBody.create_action_vector()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.get_action_info"><code class="docutils literal notranslate"><span class="pre">WholeBody.get_action_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.get_action_info_dict"><code class="docutils literal notranslate"><span class="pre">WholeBody.get_action_info_dict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.joint_action_policy"><code class="docutils literal notranslate"><span class="pre">WholeBody.joint_action_policy</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.name"><code class="docutils literal notranslate"><span class="pre">WholeBody.name</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.print_action_info"><code class="docutils literal notranslate"><span class="pre">WholeBody.print_action_info()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.controllers.composite.composite_controller.WholeBody.print_action_info_dict"><code class="docutils literal notranslate"><span class="pre">WholeBody.print_action_info_dict()</span></code></a></li>
@@ -864,8 +951,8 @@ By the robosuite core team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

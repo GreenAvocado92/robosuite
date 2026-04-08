@@ -16,39 +16,41 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-
-  
-  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=81f6180a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=96be8719" />
   
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9f1c6d22"></script>
-    <script src="../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'source/robosuite.models.robots';</script>
     <script src="../_static/js/custom.js?v=4441fbbd"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -57,6 +59,7 @@
     <link rel="prev" title="robosuite.models.objects.primitive package" href="robosuite.models.objects.primitive.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="1.5" />
   </head>
   
   
@@ -72,19 +75,8 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -92,7 +84,6 @@
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search..."
          aria-label="Search..."
          autocomplete="off"
@@ -100,8 +91,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -117,7 +108,8 @@
       
       
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -147,21 +139,17 @@
     
     
     <img src="../_static/robosuite_color.png" class="logo__image only-light" alt="robosuite 1.5 documentation - Home"/>
-    <script>document.write(`<img src="../_static/robosuite_color.png" class="logo__image only-dark" alt="robosuite 1.5 documentation - Home"/>`);</script>
+    <img src="../_static/robosuite_color.png" class="logo__image only-dark pst-js-only" alt="robosuite 1.5 documentation - Home"/>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
@@ -271,9 +259,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -356,7 +349,7 @@
 
 
 <button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
   title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
@@ -370,25 +363,17 @@
 
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
-  </button>
-`);
-</script>
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
 </div></div>
@@ -456,6 +441,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.add_leg_base"><code class="docutils literal notranslate"><span class="pre">RobotModel.add_leg_base()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.add_mobile_base"><code class="docutils literal notranslate"><span class="pre">RobotModel.add_mobile_base()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.add_mount"><code class="docutils literal notranslate"><span class="pre">RobotModel.add_mount()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.add_null_base"><code class="docutils literal notranslate"><span class="pre">RobotModel.add_null_base()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.all_actuators"><code class="docutils literal notranslate"><span class="pre">RobotModel.all_actuators</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.all_joints"><code class="docutils literal notranslate"><span class="pre">RobotModel.all_joints</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.base_xpos_offset"><code class="docutils literal notranslate"><span class="pre">RobotModel.base_xpos_offset</span></code></a></li>
@@ -557,6 +543,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.humanoid_model.HumanoidModel.eef_name"><code class="docutils literal notranslate"><span class="pre">HumanoidModel.eef_name</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.humanoid_model.HumanoidModel.init_qpos"><code class="docutils literal notranslate"><span class="pre">HumanoidModel.init_qpos</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.humanoid_model.HumanoidModel.models"><code class="docutils literal notranslate"><span class="pre">HumanoidModel.models</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.humanoid_model.HumanoidModel.mujoco_model"><code class="docutils literal notranslate"><span class="pre">HumanoidModel.mujoco_model</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.humanoid_model.HumanoidModel.top_offset"><code class="docutils literal notranslate"><span class="pre">HumanoidModel.top_offset</span></code></a></li>
 </ul>
 </li>
@@ -573,6 +560,7 @@ document.write(`
 <li class="toctree-l4"><a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.humanoid_upperbody_model.HumanoidUpperBodyModel.eef_name"><code class="docutils literal notranslate"><span class="pre">HumanoidUpperBodyModel.eef_name</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.humanoid_upperbody_model.HumanoidUpperBodyModel.init_qpos"><code class="docutils literal notranslate"><span class="pre">HumanoidUpperBodyModel.init_qpos</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.humanoid_upperbody_model.HumanoidUpperBodyModel.models"><code class="docutils literal notranslate"><span class="pre">HumanoidUpperBodyModel.models</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.humanoid_upperbody_model.HumanoidUpperBodyModel.mujoco_model"><code class="docutils literal notranslate"><span class="pre">HumanoidUpperBodyModel.mujoco_model</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.humanoid_upperbody_model.HumanoidUpperBodyModel.top_offset"><code class="docutils literal notranslate"><span class="pre">HumanoidUpperBodyModel.top_offset</span></code></a></li>
 </ul>
 </li>
@@ -742,11 +730,11 @@ document.write(`
 <span id="robosuite-models-robots-compositional-module"></span><h2>robosuite.models.robots.compositional module<a class="headerlink" href="#module-robosuite.models.robots.compositional" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaDexLH">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.compositional.</span></span><span class="sig-name descname"><span class="pre">PandaDexLH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexLH" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.compositional.</span></span><span class="sig-name descname"><span class="pre">PandaDexLH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexLH" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.panda_robot.Panda" title="robosuite.models.robots.manipulators.panda_robot.Panda"><code class="xref py py-class docutils literal notranslate"><span class="pre">Panda</span></code></a></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaDexLH.default_gripper">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_gripper</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexLH.default_gripper" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_gripper</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexLH.default_gripper" title="Link to this definition">#</a></dt>
 <dd><p>Defines the default gripper type for this robot that gets added to end effector</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -760,7 +748,7 @@ document.write(`
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaDexLH.gripper_mount_pos_offset">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gripper_mount_pos_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexLH.gripper_mount_pos_offset" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gripper_mount_pos_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexLH.gripper_mount_pos_offset" title="Link to this definition">#</a></dt>
 <dd><p>Define the custom offset of the gripper that is different from the one defined in xml.
 The offset will applied to the first body in the gripper definition file.</p>
 <dl class="field-list simple">
@@ -772,7 +760,7 @@ The offset will applied to the first body in the gripper definition file.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaDexLH.gripper_mount_quat_offset">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gripper_mount_quat_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexLH.gripper_mount_quat_offset" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gripper_mount_quat_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexLH.gripper_mount_quat_offset" title="Link to this definition">#</a></dt>
 <dd><p>Define the custom orientation offset of the gripper with respect to the arm.
 The offset will applied to the first body in the gripper definition file.
 Return empty dict by default unless specified.
@@ -783,11 +771,11 @@ The quaternion is in the (w, x, y, z) format to match the mjcf format.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaDexRH">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.compositional.</span></span><span class="sig-name descname"><span class="pre">PandaDexRH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexRH" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.compositional.</span></span><span class="sig-name descname"><span class="pre">PandaDexRH</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexRH" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.panda_robot.Panda" title="robosuite.models.robots.manipulators.panda_robot.Panda"><code class="xref py py-class docutils literal notranslate"><span class="pre">Panda</span></code></a></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaDexRH.default_gripper">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_gripper</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexRH.default_gripper" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_gripper</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexRH.default_gripper" title="Link to this definition">#</a></dt>
 <dd><p>Defines the default gripper type for this robot that gets added to end effector</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -801,7 +789,7 @@ The quaternion is in the (w, x, y, z) format to match the mjcf format.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaDexRH.gripper_mount_pos_offset">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gripper_mount_pos_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexRH.gripper_mount_pos_offset" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gripper_mount_pos_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexRH.gripper_mount_pos_offset" title="Link to this definition">#</a></dt>
 <dd><p>Define the custom offset of the gripper that is different from the one defined in xml.
 The offset will applied to the first body in the gripper definition file.</p>
 <dl class="field-list simple">
@@ -813,7 +801,7 @@ The offset will applied to the first body in the gripper definition file.</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaDexRH.gripper_mount_quat_offset">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">gripper_mount_quat_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexRH.gripper_mount_quat_offset" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">gripper_mount_quat_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaDexRH.gripper_mount_quat_offset" title="Link to this definition">#</a></dt>
 <dd><p>Define the custom orientation offset of the gripper with respect to the arm.
 The offset will applied to the first body in the gripper definition file.
 Return empty dict by default unless specified.
@@ -824,11 +812,11 @@ The quaternion is in the (w, x, y, z) format to match the mjcf format.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaOmron">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.compositional.</span></span><span class="sig-name descname"><span class="pre">PandaOmron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.compositional.</span></span><span class="sig-name descname"><span class="pre">PandaOmron</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.panda_robot.Panda" title="robosuite.models.robots.manipulators.panda_robot.Panda"><code class="xref py py-class docutils literal notranslate"><span class="pre">Panda</span></code></a></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaOmron.base_xpos_offset">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_xpos_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron.base_xpos_offset" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">base_xpos_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron.base_xpos_offset" title="Link to this definition">#</a></dt>
 <dd><p>Defines the dict of various (x,y,z) tuple offsets relative to specific arenas placed at (0,0,0)
 Assumes robot is facing forwards (in the +x direction) when determining offset. Should have entries for each
 manipulator arena case; i.e.: “bins”, “empty”, and “table”)</p>
@@ -856,12 +844,12 @@ if placed in the table arena</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaOmron.default_arms">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_arms</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron.default_arms" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_arms</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron.default_arms" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaOmron.default_base">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_base</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron.default_base" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_base</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron.default_base" title="Link to this definition">#</a></dt>
 <dd><p>Defines the default mount type for this robot that gets added to root body (base)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -875,7 +863,7 @@ if placed in the table arena</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaOmron.init_qpos">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">init_qpos</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron.init_qpos" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">init_qpos</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron.init_qpos" title="Link to this definition">#</a></dt>
 <dd><p>Defines the default rest qpos of this robot</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -889,18 +877,18 @@ if placed in the table arena</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.PandaOmron.init_torso_qpos">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">init_torso_qpos</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron.init_torso_qpos" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">init_torso_qpos</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.PandaOmron.init_torso_qpos" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.SpotWithArm">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.compositional.</span></span><span class="sig-name descname"><span class="pre">SpotWithArm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArm" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.compositional.</span></span><span class="sig-name descname"><span class="pre">SpotWithArm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArm" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.spot_arm.SpotArm" title="robosuite.models.robots.manipulators.spot_arm.SpotArm"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpotArm</span></code></a></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.SpotWithArm.base_xpos_offset">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_xpos_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArm.base_xpos_offset" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">base_xpos_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArm.base_xpos_offset" title="Link to this definition">#</a></dt>
 <dd><p>Defines the dict of various (x,y,z) tuple offsets relative to specific arenas placed at (0,0,0)
 Assumes robot is facing forwards (in the +x direction) when determining offset. Should have entries for each
 manipulator arena case; i.e.: “bins”, “empty”, and “table”)</p>
@@ -928,12 +916,12 @@ if placed in the table arena</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.SpotWithArm.default_arms">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_arms</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArm.default_arms" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_arms</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArm.default_arms" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.SpotWithArm.default_base">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_base</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArm.default_base" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_base</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArm.default_base" title="Link to this definition">#</a></dt>
 <dd><p>Defines the default mount type for this robot that gets added to root body (base)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -947,7 +935,7 @@ if placed in the table arena</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.SpotWithArm.init_qpos">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">init_qpos</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArm.init_qpos" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">init_qpos</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArm.init_qpos" title="Link to this definition">#</a></dt>
 <dd><p>Defines the default rest qpos of this robot</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -963,11 +951,11 @@ if placed in the table arena</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.SpotWithArmFloating">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.compositional.</span></span><span class="sig-name descname"><span class="pre">SpotWithArmFloating</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArmFloating" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.compositional.</span></span><span class="sig-name descname"><span class="pre">SpotWithArmFloating</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArmFloating" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="robosuite.models.robots.manipulators.html#robosuite.models.robots.manipulators.spot_arm.SpotArm" title="robosuite.models.robots.manipulators.spot_arm.SpotArm"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpotArm</span></code></a></p>
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.SpotWithArmFloating.base_xpos_offset">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_xpos_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArmFloating.base_xpos_offset" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">base_xpos_offset</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArmFloating.base_xpos_offset" title="Link to this definition">#</a></dt>
 <dd><p>Defines the dict of various (x,y,z) tuple offsets relative to specific arenas placed at (0,0,0)
 Assumes robot is facing forwards (in the +x direction) when determining offset. Should have entries for each
 manipulator arena case; i.e.: “bins”, “empty”, and “table”)</p>
@@ -995,12 +983,12 @@ if placed in the table arena</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.SpotWithArmFloating.default_arms">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_arms</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArmFloating.default_arms" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_arms</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArmFloating.default_arms" title="Link to this definition">#</a></dt>
 <dd></dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.SpotWithArmFloating.default_base">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_base</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArmFloating.default_base" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_base</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArmFloating.default_base" title="Link to this definition">#</a></dt>
 <dd><p>Defines the default mount type for this robot that gets added to root body (base)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1014,7 +1002,7 @@ if placed in the table arena</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.compositional.SpotWithArmFloating.init_qpos">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">init_qpos</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArmFloating.init_qpos" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">init_qpos</span></span><a class="headerlink" href="#robosuite.models.robots.compositional.SpotWithArmFloating.init_qpos" title="Link to this definition">#</a></dt>
 <dd><p>Defines the default rest qpos of this robot</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1033,7 +1021,7 @@ if placed in the table arena</p>
 <span id="robosuite-models-robots-robot-model-module"></span><h2>robosuite.models.robots.robot_model module<a class="headerlink" href="#module-robosuite.models.robots.robot_model" title="Link to this heading">#</a></h2>
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.robot_model.</span></span><span class="sig-name descname"><span class="pre">RobotModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.robot_model.</span></span><span class="sig-name descname"><span class="pre">RobotModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <a class="reference internal" href="robosuite.models.html#robosuite.models.base.MujocoXMLModel" title="robosuite.models.base.MujocoXMLModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">MujocoXMLModel</span></code></a></p>
 <p>Base class for all robot models.</p>
 <dl class="field-list simple">
@@ -1095,23 +1083,29 @@ if placed in the table arena</p>
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.add_null_base">
+<span class="sig-name descname"><span class="pre">add_null_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">NullBaseModel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.add_null_base" title="Link to this definition">#</a></dt>
+<dd><p>Do not add any base to the robot.</p>
+</dd></dl>
+
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.all_actuators">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all_actuators</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.all_actuators" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">all_actuators</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.all_actuators" title="Link to this definition">#</a></dt>
 <dd><p>Returns:
 list: (Default is no actuators; i.e.: empty list)</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.all_joints">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">all_joints</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.all_joints" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">all_joints</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.all_joints" title="Link to this definition">#</a></dt>
 <dd><p>Returns:
 list: (Default is no joints; i.e.: empty list)</p>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.base_xpos_offset">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">base_xpos_offset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.base_xpos_offset" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">base_xpos_offset</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.base_xpos_offset" title="Link to this definition">#</a></dt>
 <dd><p>Defines the dict of various (x,y,z) tuple offsets relative to specific arenas placed at (0,0,0)
 Assumes robot is facing forwards (in the +x direction) when determining offset. Should have entries for each
 arena case; i.e.: “bins”, “empty”, and “table”)</p>
@@ -1131,7 +1125,7 @@ arena case; i.e.: “bins”, “empty”, and “table”)</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.bottom_offset">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bottom_offset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.bottom_offset" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">bottom_offset</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.bottom_offset" title="Link to this definition">#</a></dt>
 <dd><p>Returns vector from model root body to model bottom.
 By default, this is equivalent to this robot’s mount’s (bottom_offset - top_offset) + this robot’s base offset</p>
 <dl class="field-list simple">
@@ -1146,7 +1140,7 @@ By default, this is equivalent to this robot’s mount’s (bottom_offset - top_
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.contact_geom_rgba">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">contact_geom_rgba</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.contact_geom_rgba" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">contact_geom_rgba</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.contact_geom_rgba" title="Link to this definition">#</a></dt>
 <dd><p>RGBA color to assign to all contact geoms for this model</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1160,7 +1154,7 @@ By default, this is equivalent to this robot’s mount’s (bottom_offset - top_
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.default_base">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_base</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.default_base" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_base</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.default_base" title="Link to this definition">#</a></dt>
 <dd><p>Defines the default mount type for this robot that gets added to root body (base)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1174,7 +1168,7 @@ By default, this is equivalent to this robot’s mount’s (bottom_offset - top_
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.default_controller_config">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default_controller_config</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.default_controller_config" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_controller_config</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.default_controller_config" title="Link to this definition">#</a></dt>
 <dd><p>Defines the name of default controller config file in the controllers/config directory for this robot.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1192,7 +1186,7 @@ By default, this is equivalent to this robot’s mount’s (bottom_offset - top_
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.dof">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dof</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.dof" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">dof</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.dof" title="Link to this definition">#</a></dt>
 <dd><p>Defines the number of DOF of the robot</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1206,7 +1200,7 @@ By default, this is equivalent to this robot’s mount’s (bottom_offset - top_
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.horizontal_radius">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">horizontal_radius</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.horizontal_radius" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">horizontal_radius</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">float</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.horizontal_radius" title="Link to this definition">#</a></dt>
 <dd><p>Returns maximum distance from model root body to any radial point of the model. This method takes into
 account the mount horizontal radius as well</p>
 <dl class="field-list simple">
@@ -1221,7 +1215,7 @@ account the mount horizontal radius as well</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.init_qpos">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">init_qpos</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.init_qpos" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">init_qpos</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.init_qpos" title="Link to this definition">#</a></dt>
 <dd><p>Defines the default rest qpos of this robot</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1235,7 +1229,7 @@ account the mount horizontal radius as well</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.models">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">models</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="robosuite.models.html#robosuite.models.base.MujocoXMLModel" title="robosuite.models.base.MujocoXMLModel"><span class="pre">MujocoXMLModel</span></a><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.models" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">models</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="robosuite.models.html#robosuite.models.base.MujocoXMLModel" title="robosuite.models.base.MujocoXMLModel"><span class="pre">MujocoXMLModel</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.models" title="Link to this definition">#</a></dt>
 <dd><p>Returns a list of all m(sub-)models owned by this robot model. By default, this includes the mount model,
 if specified</p>
 <dl class="field-list simple">
@@ -1250,7 +1244,7 @@ if specified</p>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.naming_prefix">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">naming_prefix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.naming_prefix" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">naming_prefix</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.naming_prefix" title="Link to this definition">#</a></dt>
 <dd><p>Generates a standardized prefix to prevent naming collisions</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1310,7 +1304,7 @@ exists for this value, it will be skipped</p></li>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModel.top_offset">
-<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">top_offset</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.top_offset" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">top_offset</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModel.top_offset" title="Link to this definition">#</a></dt>
 <dd><p>Returns vector from model root body to model top.
 Useful for, e.g. placing models on a surface.
 Must be defined by subclass.</p>
@@ -1328,7 +1322,7 @@ Must be defined by subclass.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="robosuite.models.robots.robot_model.RobotModelMeta">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.robot_model.</span></span><span class="sig-name descname"><span class="pre">RobotModelMeta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModelMeta" title="Link to this definition">#</a></dt>
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">robosuite.models.robots.robot_model.</span></span><span class="sig-name descname"><span class="pre">RobotModelMeta</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">class_dict</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#robosuite.models.robots.robot_model.RobotModelMeta" title="Link to this definition">#</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">type</span></code></p>
 <p>Metaclass for registering robot arms</p>
 </dd></dl>
@@ -1410,14 +1404,16 @@ Must be defined by subclass.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subpackages">Subpackages</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submodules">Submodules</a></li>
@@ -1464,6 +1460,7 @@ Must be defined by subclass.</p>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.add_leg_base"><code class="docutils literal notranslate"><span class="pre">RobotModel.add_leg_base()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.add_mobile_base"><code class="docutils literal notranslate"><span class="pre">RobotModel.add_mobile_base()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.add_mount"><code class="docutils literal notranslate"><span class="pre">RobotModel.add_mount()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.add_null_base"><code class="docutils literal notranslate"><span class="pre">RobotModel.add_null_base()</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.all_actuators"><code class="docutils literal notranslate"><span class="pre">RobotModel.all_actuators</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.all_joints"><code class="docutils literal notranslate"><span class="pre">RobotModel.all_joints</span></code></a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#robosuite.models.robots.robot_model.RobotModel.base_xpos_offset"><code class="docutils literal notranslate"><span class="pre">RobotModel.base_xpos_offset</span></code></a></li>
@@ -1540,8 +1537,8 @@ By the robosuite core team
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
